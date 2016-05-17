@@ -24,5 +24,15 @@ void setup() {
 }
  
 void draw() {
+  lights();
+  pushMatrix(); // Player
+  translate(mouseX, mouseY, 0);
+  sphere(20);
+  popMatrix();
   
+   pushMatrix(); // Ball
+  translate(mouseX, mouseY, 0);
+  sphere(90);
+  popMatrix();
+ 
 }
