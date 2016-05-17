@@ -7,10 +7,11 @@ float y = height/2;
 float w = 100;
 float h = 100;
  float fov = PI/3.0;
+ float gr = 3.8;
 // and speed in both the x and y axes
  
 float speedX = 0;
-float speedY = 000;
+float speedY = 0;
  float cameraZ = (height/2.0) / tan(fov/2.0);
  
 void setup() {
@@ -24,6 +25,16 @@ void setup() {
 }
  
 void draw() {
+    background(200);
+  y = y + speedY;
+ speedY = speedY + gr;
+
+  x=width/2;
+
+if (y >= height -60 ){
+y=height - 60;
+speedY=-speedY/2;
+}
   lights();
   pushMatrix(); // Player
   translate(mouseX, mouseY, 0);
@@ -31,8 +42,8 @@ void draw() {
   popMatrix();
   
    pushMatrix(); // Ball
-  translate(mouseX, mouseY, 0);
-  sphere(90);
+  translate(x, y, 0);
+  sphere(60);
   popMatrix();
  
 }
