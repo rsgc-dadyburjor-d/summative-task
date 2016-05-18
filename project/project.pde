@@ -49,18 +49,25 @@ if (x <= 0 + 60 ){
 x=0+60;
 speedX=-speedX/2;
 }
-  lights();
+fill(#A50202,50);
+rect(0,0,width/2, height);
+fill(#023FA5,50);
+rect(width/2,0,width/2, height);
+
+  lights();//lighting
   lightSpecular(0, 0, 255);
   directionalLight(0,0, 255, -1, 0, -.5);
   lightSpecular(255, 0, 0);
   directionalLight(255,0, 0, 1, 0, -.5);
+  
   pushMatrix(); // Player
-  fill(50);
+  fill(250);
   translate(mouseX, mouseY, 0);
   sphere(20);
   popMatrix();
   
    pushMatrix(); // Ball
+   fill(50);
   translate(x, y, 0);
   shininess(5.0); 
   specular(255,0 , 255);
