@@ -34,8 +34,8 @@ void draw() {
 
 if (y >= height -60 ){
 y=height - 60;
-speedY=-speedY/1.2 +8;
-speedX=speedX/1.01;
+speedY=-speedY/1.2 +4;
+speedX=speedX/1.04;
 }
 if (y <= 0 + 60 ){
 y=0+60;
@@ -43,37 +43,54 @@ speedY=-speedY/2;
 }
 if (x >= width -60 ){
 x=width - 60;
-speedX=-speedX/2;
+speedX=-speedX/1.5;
 }
 if (x <= 0 + 60 ){
 x=0+60;
-speedX=-speedX/2;
+speedX=-speedX/1.5;
 }
-fill(#A50202,50);
+fill(#8E0B04,130);
 rect(0,0,width/2, height);
-fill(#023FA5,50);
+fill(#002195,130);
 rect(width/2,0,width/2, height);
+fill(#FFFFFF,60);
+rect(0,height/1.3,width, height/3);
+pushMatrix();
+//goals
+
+fill(#D30000);
+rect(0,height/1.5,width/25, height/3);
+fill(#0031DE);
+rect(width/1.04,height/1.5,width/25, height/3);
+popMatrix();
+
+fill(255);
+rect(width/2-20,0,40, height);
+
 
   lights();//lighting
+  ambientLight(102, 102, 102);
   lightSpecular(0, 0, 255);
   directionalLight(0,0, 255, -1, 0, -.5);
   lightSpecular(255, 0, 0);
   directionalLight(255,0, 0, 1, 0, -.5);
   
+  
   pushMatrix(); // Player
-  fill(250);
+  fill(20);
   translate(mouseX, mouseY, 0);
   sphere(20);
   popMatrix();
   
    pushMatrix(); // Ball
-   fill(50);
+   
+   fill(10);
   translate(x, y, 0);
   shininess(5.0); 
   specular(255,0 , 255);
   sphere(60);
   popMatrix();
- 
+  text(frameRate, 50,50);
 }
 void mouseClicked(){
   speedX = speedX+20;
