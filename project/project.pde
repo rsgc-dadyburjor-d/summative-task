@@ -8,6 +8,8 @@ float w = 100;
 float h = 100;
  float fov = PI/3.0;
  float gr = .8;
+ float ball;
+int mousex = mouseX;
 // and speed in both the x and y axes
  
 float speedX = 0;
@@ -17,7 +19,7 @@ float speedY = 0;
 void setup() {
  ortho();
   fullScreen(P3D);
-  
+  noCursor();
  frameRate(60);
   // change the mode we draw circles so they are
   // aligned in the top left
@@ -26,11 +28,12 @@ void setup() {
  
 void draw() {
    
+  background(50);
   y = y + speedY;
   x = x + speedX;
  speedY = speedY + gr;
 
- 
+ mousex = mouseX;
 
 if (y >= height -60 ){
 y=height - 60;
@@ -48,6 +51,19 @@ speedX=-speedX/1.5;
 if (x <= 0 + 60 ){
 x=0+60;
 speedX=-speedX/1.5;
+if (mouseX +20 <= x){
+if (mouseY <= y){
+  speedX = 0;
+  speedY = 0;
+}
+}
+println(x);
+println(mouseX);
+
+textSize(60);
+text(x,width/2, height/2);
+
+
 }
 fill(#8E0B04,130);
 rect(0,0,width/2, height);
@@ -77,9 +93,13 @@ rect(width/2-20,0,40, height);
   
   
   pushMatrix(); // Player
-  fill(20);
-  translate(mouseX, mouseY, 0);
-  sphere(20);
+  fill(0);
+
+  
+   
+
+  rect(mouseX, mouseY,30,140,30);
+ 
   popMatrix();
   
    pushMatrix(); // Ball
@@ -91,6 +111,8 @@ rect(width/2-20,0,40, height);
   sphere(60);
   popMatrix();
   text(frameRate, 50,50);
+  text(x,width/2, height/2);
+  text(mouseX,width/2, height/2 - 50);
 }
 void mouseClicked(){
   speedX = speedX+20;
