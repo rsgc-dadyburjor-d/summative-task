@@ -113,6 +113,19 @@ rect(width/2-20,0,40, height);
   text(frameRate, 50,50);
   text(x,width/2, height/2);
   text(mouseX,width/2, height/2 - 50);
+  if(mouseX -10 < x +60){
+  if(mouseX +10 > x -60){
+    if(mouseY -10 < y +180){
+  if(mouseY +10 > y -180){
+    
+    x += 10;
+    y += 10;
+     speedX = -speedX + -speedX/6 + 5;
+  speedY = -speedY/2 + -speedY/6 +1;
+  }
+  }
+  }
+  }
 }
 void mouseClicked(){
   speedX = speedX+20;
